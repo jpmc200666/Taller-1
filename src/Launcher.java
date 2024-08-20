@@ -2,29 +2,38 @@
 import java.util.InputMismatchException;
 import java.util.Scanner;
 
+import javax.swing.JOptionPane;
+
 
 public class Launcher {
     public static void main(String[] args) {
-        Scanner scanner = new Scanner(System.in);
-        
+        Scanner scanner = new Scanner(System.in); 
+        Racional fraccion1, fraccion2;
         while (true) { // Bucle infinito para reiniciar el código
             try {
-                // Solicitar primera fracción
-                System.out.println("Ingrese el numerador de la primera fraccion:");
-                int num1 = scanner.nextInt();
-                System.out.println("Ingrese el denominador de la primera fraccion:");
-                int den1 = scanner.nextInt();
+                int rta=JOptionPane.showConfirmDialog(null, "Desea ingresar los valores de las fracciones?", "Eleccion", JOptionPane.YES_NO_OPTION);
+                if (rta==JOptionPane.YES_OPTION) {
+                    // Solicitar primera fracción
+                    System.out.println("Ingrese el numerador de la primera fraccion:");
+                    int num1 = scanner.nextInt();
+                    System.out.println("Ingrese el denominador de la primera fraccion:");
+                    int den1 = scanner.nextInt();
 
-                Racional fraccion1 = new Racional(num1, den1);
+                    fraccion1=new Racional(num1, den1);
 
-                // Solicitar segunda fracción
-                System.out.println("Ingrese el numerador de la segunda fraccion:");
-                int num2 = scanner.nextInt();
-                System.out.println("Ingrese el denominador de la segunda fraccion:");
-                int den2 = scanner.nextInt();
+                    // Solicitar segunda fracción
+                    System.out.println("Ingrese el numerador de la segunda fraccion:");
+                    int num2 = scanner.nextInt();
+                    System.out.println("Ingrese el denominador de la segunda fraccion:");
+                    int den2 = scanner.nextInt();
 
-                Racional fraccion2 = new Racional(num2, den2);
+                    fraccion2 = new Racional(num2, den2);
 
+                }else{
+                    fraccion1= new Racional();
+                    fraccion2 = new Racional();
+                }
+                
                 // Realizar operaciones
                 Racional suma = fraccion1.sumar(fraccion2);
                 Racional resta = fraccion1.restar(fraccion2);
